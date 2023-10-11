@@ -1,0 +1,65 @@
+﻿@*
+Ben Hayden
+Module 10
+November 4
+*@
+
+@model BoardStateModel
+@{
+    ViewBag.Title = "Tic Tac Toe";
+}
+
+@*show banner if game is over*@
+@if (Model.IsGameOver())
+{
+    @if (Model.Winner == "tie")
+    {
+        <h2 class="winner-bar">It's a tie!</h2>
+    }
+    else
+    {
+        <h2 class="winner-bar">@Model.Winner wins!</h2>
+    }
+    <div class="new-game-link"><a asp-action="NewGame">New Game</a></div>
+}
+@*otherwise show whose turn it is*@
+else
+{
+    <h2 class="notification-bar">It's @Model.WhoseTurn's turn</h2>
+}
+
+<!-- Game area -->
+<div class="container">
+    <form asp-action="Index" method="post">
+        <ul class="list-inline game-board">
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="0" @Model.Disabled(0)>@Model.Boxes[0]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="1" @Model.Disabled(1)>@Model.Boxes[1]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="2" @Model.Disabled(2)>@Model.Boxes[2]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="3" @Model.Disabled(3)>@Model.Boxes[3]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="4" @Model.Disabled(4)>@Model.Boxes[4]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="5" @Model.Disabled(5)>@Model.Boxes[5]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="6" @Model.Disabled(6)>@Model.Boxes[6]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="7" @Model.Disabled(7)>@Model.Boxes[7]</button>
+            </li>
+            <li class="list-inline-item tic-tac-toe-box">
+                <button class="tic-tac-toe-button team" type="submit" name="buttonNumber" value="8" @Model.Disabled(8)>@Model.Boxes[8]</button>
+            </li>
+        </ul>
+    </form>
+</div>
+
